@@ -11,6 +11,10 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "foreground-tint": "var(--foreground-tint)",
+        "primary": "var(--primary)",
+        "secondary": "var(--secondary)",
+        "intense-background": "var(--intense-background)",
       },
     },
   },

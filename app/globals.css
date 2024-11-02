@@ -3,19 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #e4e4e4;
+  --foreground: #10141a;
+  --intense-background: #ffffff;
+  --foreground-tint: #10141a0d;
+  --primary: #83a2db;
+  --secondary: #ce6969;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.background-panel {
+  @apply rounded-[64px] p-16 bg-white/40 backdrop-blur-sm;
+}
+
+input[type="url"], input[type="text"] {
+  @apply bg-foreground-tint px-4 py-2 border-2 border-foreground-tint rounded-full;
 }

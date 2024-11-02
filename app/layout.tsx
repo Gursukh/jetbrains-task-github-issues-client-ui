@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import RootContextProvider from "./(components)/RootContext";
+import TabBar from "./(components)/Tabs";
+import { AnimatedBackgroundBlob } from "./(components)/AnimatedBlob";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const font = localFont({
+  src: [
+    { path: "/fonts/LufgaBold.ttf", weight: "700", style: "normal" },
+    { path: "/fonts/LufgaMedium.ttf", weight: "500", style: "normal" },
+    { path: "/fonts/LufgaRegular.ttf", weight: "400", style: "normal" },
+    { path: "/fonts/LufgaLight.ttf", weight: "300", style: "normal" },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -25,10 +26,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${font.className} antialiased h-[100dvh]`}>
+        <RootContextProvider>
         {children}
+
+          <div className="z-[-100] fixed top-0 left-0 w-full h-full noise-layer overflow-hidden">
+            <div
+              className={`absolute rounded-full top-[80%] left-1/2 -translate-x-1/2 w-4/5 h-1/2 blur-[200px] bg-primary`}
+            />
+          </div>
+        </RootContextProvider>
       </body>
     </html>
   );
